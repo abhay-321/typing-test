@@ -25,6 +25,15 @@ body {
   background: #e0e0e0;
   padding: 10px;
   border-radius: 5px;
+  white-space: pre-wrap; /* Preserve whitespace */
+}
+
+.correct-char {
+  color: #28a745;
+}
+
+.incorrect-char {
+  color: #dc3545;
 }
 
 .input-area {

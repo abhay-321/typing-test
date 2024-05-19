@@ -14,9 +14,11 @@ const TypingTest = () => {
     if (!startTime) {
       setStartTime(Date.now());
     }
-    setInput(value);
+    if (value.length <= sampleText.length) {
+      setInput(value);
+    }
 
-    if (value === sampleText) {
+    if (value.length === sampleText.length) {
       setEndTime(Date.now());
     }
   };
@@ -42,7 +44,7 @@ const TypingTest = () => {
 
   return (
     <div className="typing-test-container">
-      <TextDisplay text={sampleText} />
+      <TextDisplay text={sampleText} input={input} />
       <InputArea input={input} onInputChange={handleInputChange} />
       {results && <Results results={results} />}
     </div>
