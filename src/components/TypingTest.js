@@ -3,13 +3,29 @@ import TextDisplay from './TextDisplay';
 import InputArea from './InputArea';
 import Results from './Results';
 import Keyboard from './Keyboard';
+import DifficultySelector from './DifficultySelector';
 
-const sampleText = "This is a sample text for typing test.";
+const texts = {
+  Beginner: "This is a sample text for typing test.",
+  Medium: "Typing tests are a great way to improve your typing speed and accuracy.",
+  Advanced: "Advanced typing tests challenge your ability to type complex sentences quickly and accurately."
+};
 
 const TypingTest = () => {
+  const [level, setLevel] = useState(null);
+  const [sampleText, setSampleText] = useState("");
   const [input, setInput] = useState("");
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
+
+  useEffect(() => {
+    if (level) {
+      setSampleText(texts[level]);
+      setInput("");
+      setStartTime(null);
+      setEndTime(null);
+    }
+  }, [level]);
 
   const handleInputChange = (value) => {
     if (!startTime) {
@@ -46,10 +62,15 @@ const TypingTest = () => {
 
   return (
     <div className="typing-test-container">
-      <TextDisplay text={sampleText} input={input} />
-      <InputArea input={input} onInputChange={handleInputChange} />
-      {results && <Results results={results} />}
-      <Keyboard nextChar={nextChar} />
+      {!level && <DifficultySelector onSelectLevel={setLevel} />}
+      {level && (
+        <>
+          <TextDisplay text={sampleText} input={input} />
+          <InputArea input={input} onInputChange={handleInputChange} />
+          {results && <Results results={results} />}
+          <Keyboard nextChar={nextChar} />
+        </>
+      )}
     </div>
   );
 };
