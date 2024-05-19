@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TextDisplay from './TextDisplay';
 import InputArea from './InputArea';
 import Results from './Results';
+import Keyboard from './Keyboard';
 
 const sampleText = "This is a sample text for typing test.";
 
@@ -41,12 +42,14 @@ const TypingTest = () => {
   };
 
   const results = calculateResults();
+  const nextChar = sampleText[input.length] || '';
 
   return (
     <div className="typing-test-container">
       <TextDisplay text={sampleText} input={input} />
       <InputArea input={input} onInputChange={handleInputChange} />
       {results && <Results results={results} />}
+      <Keyboard nextChar={nextChar} />
     </div>
   );
 };
