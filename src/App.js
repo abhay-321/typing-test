@@ -1,10 +1,10 @@
 import logo from './logo.svg';
-import './App.css';
+import TypingTest from './components/TypingTest';
 
 function App() {
   return (
     <div>
-      HEY
+      <TypingTest></TypingTest>  
     </div>
   );
 }
