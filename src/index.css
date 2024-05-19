@@ -114,3 +114,19 @@ body {
 .difficulty-selector button:hover {
   background-color: #0056b3;
 }
+
+.next-lesson-button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.next-lesson-button:hover {
+  background-color: #218838;
+}
